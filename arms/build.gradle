@@ -2,7 +2,6 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
-    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
 
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
@@ -68,7 +67,7 @@ dependencies {
     //mvvm(Lifecycles, LiveData, and ViewModel, Room)
     annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
     annotationProcessor rootProject.ext.dependencies["room-compiler"]
-    testApi(rootProject.ext.dependencies["room-testing"]) {
+    testImplementation(rootProject.ext.dependencies["room-testing"]) {
         exclude module: 'support-compat'
         exclude module: 'support-annotations'
         exclude module: 'support-core-utils'
@@ -90,8 +89,8 @@ dependencies {
 
     //test
     api rootProject.ext.dependencies["timber"]
-    testApi rootProject.ext.dependencies["junit"]
-    androidTestApi(rootProject.ext.dependencies["espresso-core"]) {
+    testImplementation rootProject.ext.dependencies["junit"]
+    androidTestImplementation(rootProject.ext.dependencies["espresso-core"]) {
         exclude module: 'support-annotations'
     }
 
